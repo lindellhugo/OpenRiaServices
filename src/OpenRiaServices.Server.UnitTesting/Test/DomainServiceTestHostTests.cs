@@ -116,6 +116,15 @@ namespace OpenRiaServices.Server.UnitTesting.Test
         }
 
         [TestMethod]
+        public async Task AssertInvokeEchoAsyncReturnsTResult()
+        {
+            var testHost = new DomainServiceTestHost<CityDomainService>();
+
+            var result = await testHost.InvokeAsync(s => s.EchoAsync("Hello"), CancellationToken.None);
+            Assert.AreEqual(result, "EchoAsync: Hello");
+        }
+
+        [TestMethod]
         public async Task AssertQueryAsync()
         {
             var testHost = new DomainServiceTestHost<CityDomainService>();
