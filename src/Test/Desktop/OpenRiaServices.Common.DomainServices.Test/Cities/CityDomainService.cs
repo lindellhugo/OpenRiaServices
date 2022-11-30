@@ -302,6 +302,12 @@ namespace Cities
         }
 
         [Invoke]
+        public Task<string> EchoAsync(string msg)
+        {
+            return Task.FromResult( "EchoAsync: " + msg);
+        }
+
+        [Invoke]
         public async Task<string> EchoWithDelay(string msg, TimeSpan delay, CancellationToken cancellationToken)
         {
             if (!cancellationToken.Equals(ServiceContext.CancellationToken))

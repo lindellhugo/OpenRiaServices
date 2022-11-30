@@ -64,7 +64,8 @@ namespace OpenRiaServices.Server
 
             bool isTaskType = TypeUtility.IsTaskType(returnType);
 
-            this._methodName = isTaskType ? RemoveAsyncFromName(name) : name;
+            this._methodName = //isTaskType ? RemoveAsyncFromName(name) : name; 
+                name;
             this._actualReturnType = returnType;
             this.ReturnType = isTaskType ? TypeUtility.GetTaskReturnType(returnType) : returnType;
             this._attributes = attributes;
