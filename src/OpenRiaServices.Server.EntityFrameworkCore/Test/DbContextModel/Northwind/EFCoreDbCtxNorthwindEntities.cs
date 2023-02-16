@@ -74,6 +74,25 @@ namespace EFCoreModels.Northwind
                 entity.Property(e => e.Description).HasColumnType("ntext");
 
                 entity.Property(e => e.Picture).HasColumnType("image");
+
+                entity.HasDiscriminator<string>("Discriminator").HasValue("cat");
+
+            });
+
+            modelBuilder.Entity<SubCategory>(entity =>
+            {
+                entity.HasDiscriminator<string>("Discriminator").HasValue("sub");
+
+                entity.Property(e => e.TypeInfo)
+                .HasColumnName("Value");
+            });
+
+            modelBuilder.Entity<SubSubCategory>(entity =>
+            {
+                entity.HasDiscriminator<string>("Discriminator").HasValue("subsub");
+
+                entity.Property(e => e.Count)
+                .HasColumnName("Value");
             });
 
             modelBuilder.Entity<CustomerCustomerDemo>(entity =>

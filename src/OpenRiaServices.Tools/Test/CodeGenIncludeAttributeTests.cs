@@ -2,6 +2,7 @@
 using System.Globalization;
 using OpenRiaServices.Server;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TestDomainServices.EFCore;
 
 namespace OpenRiaServices.Tools.Test
 {
@@ -18,7 +19,7 @@ namespace OpenRiaServices.Tools.Test
         [Description("DomainService with [Include] succeeds")]
         public void CodeGen_Attribute_IncludeAttribute_Succeeds()
         {
-            string generatedCode = TestHelper.GenerateCodeAssertSuccess("C#", typeof(Mock_CG_Attr_Entity_Include_Succeed_DomainService));
+            string generatedCode = TestHelper.GenerateCodeAssertSuccess("C#", typeof(Northwind_CUD));
 
             // Generated property getter for Entity2
             TestHelper.AssertGeneratedCodeContains(generatedCode, "public Mock_CG_Attr_Entity_Include_Succeed_2 Entity2");
@@ -103,6 +104,9 @@ namespace OpenRiaServices.Tools.Test
             get;
             set;
         }
+
+        [Required]
+        public int? Required { get; set; }
     }
 
     public partial class Mock_CG_Attr_Entity_Include_Succeed_2

@@ -322,6 +322,12 @@ namespace TestDomainServices.EFCore
         #endregion
 
         #region Category methods
+
+        public IQueryable<SubCategory> GetSubCategories()
+        {
+            return this.DbContext.Categories.OfType<SubCategory>();
+        }
+
         public IQueryable<Category> GetCategories()
         {
             return this.DbContext.Categories;
